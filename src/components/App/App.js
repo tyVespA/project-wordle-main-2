@@ -1,5 +1,6 @@
-import Game from '../Game';
-import Header from '../Header';
+import Game from "../Game";
+import Header from "../Header";
+import FormInput from "../FormInput/FormInput";
 
 function App() {
   return (
