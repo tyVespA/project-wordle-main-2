@@ -6,6 +6,7 @@ import { WORDS } from "../../data";
 
 import GuessInput from "../GuessInput";
 import GuessResults from "../GuessResults/GuessResults";
+import Banner from "../Banner/Banner";
 import Guess from "../Guess/Guess";
 
 // Pick a random word on every pageload.
@@ -15,15 +16,27 @@ console.info({ answer });
 
 function Game() {
   const [guessList, setGuessList] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
 
   function handleSubmitGuess(guess) {
+    const nextGuessList = [...guessList, guess];
+    if (nextGuessList.length === 6 || nextGuessList.includes(answer)) {
+      setGameOver(true);
+    }
     setGuessList([...guessList, guess]);
   }
+
   return (
     <>
       <GuessResults guessList={guessList} answer={answer} />
-      {/* <Guess guessList={guessList} /> */}
-      <GuessInput handleSubmitGuess={handleSubmitGuess} />
+
+      <GuessInput handleSubmitGuess={handleSubmitGuess} gameOver={gameOver} />
+
+      {guessList.length === 6 || guessList.includes(answer) ? (
+        <Banner guessList={guessList} answer={answer} />
+      ) : (
+        ""
+      )}
     </>
   );
 }
