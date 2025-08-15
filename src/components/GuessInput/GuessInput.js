@@ -1,15 +1,12 @@
 import React from "react";
 import { useState } from "react";
 
-function GuessInput({ guessList, setGuessList }) {
+function GuessInput({ handleSubmitGuess }) {
   const [guess, setGuess] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(guess);
-    const nextGuessList = [...guessList, guess];
-    setGuessList(nextGuessList);
-    console.log(nextGuessList);
+    handleSubmitGuess(guess);
     setGuess("");
   }
   return (
