@@ -20,7 +20,7 @@ function Game() {
 
   function handleSubmitGuess(guess) {
     const nextGuessList = [...guessList, guess];
-    if (nextGuessList.length === 6 || nextGuessList.includes(answer)) {
+    if (nextGuessList.length === 6 || guess === answer) {
       setGameOver(true);
     }
     setGuessList([...guessList, guess]);
@@ -32,11 +32,7 @@ function Game() {
 
       <GuessInput handleSubmitGuess={handleSubmitGuess} gameOver={gameOver} />
 
-      {guessList.length === 6 || guessList.includes(answer) ? (
-        <Banner guessList={guessList} answer={answer} />
-      ) : (
-        ""
-      )}
+      {gameOver ? <Banner guessList={guessList} answer={answer} /> : ""}
     </>
   );
 }
