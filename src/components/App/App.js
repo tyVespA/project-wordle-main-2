@@ -1,6 +1,6 @@
 import Game from "../Game";
 import Header from "../Header";
-import FormInput from "../FormInput/FormInput";
+import FormInput from "../FormInput/GuessInput";
 
 function App() {
   return (
